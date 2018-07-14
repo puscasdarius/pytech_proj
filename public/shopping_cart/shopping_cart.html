@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>{{title}}</h1>
+  <form ng-submit="buy()">
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input ng-model="email" type="email" class="form-control" id="email" aria-describedby="emailHelp">
+    </div>
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input ng-model="address" type="test" class="form-control" id="address" placeholder="Cluj-Napoca,str....">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Buy</button>
+  </form>
+
+  <h3 style="margin-top:50px;">Product List</h3>
+  <ul class="list-group">
+    <li ng-click="remove_product(cart_elem.product)" ng-repeat="cart_elem in cart"class="list-group-item">
+      <label style="display:block">Product:{{cart_elem.product.name}}</label>
+      <label for="">Quantity:{{cart_elem.quantity}}</label>
+    </li>
+  </ul>
+</div>

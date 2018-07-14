@@ -1,0 +1,38 @@
+<div class=" view_container">
+  <h1>{{title}}</h1>
+  <label for="order_select">Order:</label>
+  <select ng-model="order_option" class="order" id="order_select">
+    <option value="price">Price</option>
+    <option value="name">Name</option>
+  </select>
+  <div class="panel view_panel">
+      <div class="card" style="width: 18rem;" ng-repeat="product in products|orderBy:ordering()">
+        <div class="card-body">
+          <h5 class="card-title">Product:{{product.name}}</h5>
+          <p class="card-text">Price:{{product.price}}</p>
+          <a  ng-click="add_to_cart(product)" class="btn btn-primary">Add to cart</a>
+          <a  ng-click="view_product(product._id)" class="btn btn-primary">View</a>
+        </div>
+      </div>
+  </div>
+
+  <nav>
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" ng-click="prev_page()"><<</a></li>
+      <li class="page-item"><a class="page-link" ng-click="next_page()">>></a></li>
+    </ul>
+  </nav>
+</div>
+
+  <div class="view_cart">
+    <h3>Shopping Cart</h3>
+    <ul class="list-group">
+      <li ng-click="remove_product(cart_elem.product)" ng-repeat="cart_elem in cart"class="list-group-item">
+        <label style="display:block">Product:{{cart_elem.product.name}}</label>
+        <label for="">Quantity:{{cart_elem.quantity}}</label>
+      </li>
+    </ul>
+    <p ng-show="display" class="alert alert-primary">Total:{{total}}</p>
+    <p ng-show="display_issue" class="alert alert-danger">Please log in</p>
+    <button ng-click="checkout()" ng-show="display" type="button" class='btn btn-success' name="button">Ckeckout</button>
+  </div>
